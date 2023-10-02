@@ -41,4 +41,11 @@ getTranslation uses these numbers to create a 3x3 matrix that will translate an 
 the object. <br>
 Dependencies: None. <br>
 Call: T = getTranslation (xCapt, yCapt) <br>
-Side effects: None. 
+Side effects: None. <br>
+
+
+Function: getRotation: theta -> matrix <br>
+Purpose: expects theta as its argument, and produces a matrix that uses theta to rotate the captain's points. <br>
+Dependencies: None. <br>
+Call: R = getRotation (theta) <br> 
+Side Effects: None. <br>

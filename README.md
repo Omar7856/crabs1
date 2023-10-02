@@ -15,7 +15,7 @@ Function: drawCapt: number1, number2, number3, number4 -> vector handle <br>
 Purpose: it takes number1, which is the x position, number2, which is the y position, number3, which is the heading of the plotted points, <br>
 and number4, the size of the captain, and returns a vector of graphics handle called captainGraphics. It takes its inputs from the <br>
 crabs function, where xCapt, yCapt, thetaCapt, and sizeCapt are predetermined in the crabs function and entered into this function. <br>
-Dependencies: getCapt(), capt(), drawLine() <br>
+Dependencies: getCapt(), capt(), drawLine(), getRotation(), getTranslate() <br>
 Call: captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt) <br>
 Side Effects: None <br>
 

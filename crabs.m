@@ -15,5 +15,35 @@ sizeCapt = 50;
 
 captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt)
 %*******************************************************
+
+% initialize command
+
+cmd="null";
+
+% creates an infinite loop to keep the game from quitting
+% (shift+q will be the keyboard hit to quit the game)
+while(cmd != "Q")
+
+% cmd will read keyboard inputs
+cmd = kbhit();
+
+% if the keys w, a, or d, are pressed, it initializes the following:
+ if( cmd == "w" || cmd == "a" || cmd == "d")
+
+ % it erases the old captain so there's no duplicates of the captain in the game
+ for i=1:length(captainGraphics);
+   set(captainGraphics(i),'Visible','off');
+ endfor
+
+ % then, it moves captain using the moveCapt function
+ [xCapt,yCapt,thetaCapt] = moveCapt(cmd,xCapt,yCapt,thetaCapt);
+
+
+ % afterwards, it draws the "new" captain at its new points
+ captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt)
+endif
+
+endwhile
+close all
 endfunction
 

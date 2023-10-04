@@ -45,7 +45,7 @@ Side effects: None. <br>
 
 
 Function: getRotation: theta -> matrix <br>
-Purpose: expects theta as its argument, and produces a matrix that uses theta to rotate the captain's points. <br>
+Purpose: expects theta as its argument, and produces a matrix that uses theta to multiply the captain's matrix points to produce a rotation. <br>
 Dependencies: None. <br>
 Call: R = getRotation (theta) <br> 
 Side Effects: None. <br>

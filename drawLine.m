@@ -2,7 +2,7 @@
 drawLine draws a line from point P to point Q with a color of choice
 %}
 
-function handle = DrawLine (P,Q,myColor)
+function handle = drawLine (P,Q,myColor)
 
 
 % extracts the x coordinates
@@ -12,7 +12,7 @@ x=[P(1) ; Q(1)];
 % extracts the y coordinates
 y=[P(2) ; Q(2)];
 %
-handle = plot(x,y,myColor)
+handle = plot(x,y,myColor);
 
 % changes the thickness of the line
 

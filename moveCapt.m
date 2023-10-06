@@ -1,22 +1,42 @@
 
-function [xCapt, yCapt, thetaCapt] = moveCapt (cmd,x,y,theta)
-  xCapt = x;
-  yCapt = y;
-  thetaCapt = theta;
- dTheta = pi/6;
+function [xCapt, yCapt, thetaCapt] = moveCapt (cmd,x,y,theta,width,height,size)
 
-  if( cmd == "w")
-  %move forward
+  dTheta = pi/6;
+  dStep = 50;
 
+if( cmd == "w")
 
-   elseif ( cmd == "a")
-  %rotate left
-  thetaCapt = theta - dTheta;
+    %move forward
+    xTemp = x + dStep*cos(theta);
+    yTemp = y + dStep*sin(theta);
 
-   elseif (cmd == "d")
-  %rotate right
+    if(isOnMap(xTemp,yTemp,width,height,size))
+      xCapt=xTemp;
+      yCapt=yTemp;
+      thetaCapt = theta;
+    else
+      xCapt = x;
+      yCapt = y;
+      thetaCapt = theta;
+    endif
 
-    thetaCapt = theta + dTheta;
-  endif
+elseif ( cmd == "a")
+    %rotate left
+     xCapt = x;
+     yCapt = y;
+     thetaCapt = theta - dTheta;
+
+elseif (cmd == "d")
+    %rotate right
+     xCapt = x;
+     yCapt = y;
+     thetaCapt = theta + dTheta;
+
+ else
+  % default case
+    xCapt = x;
+    yCapt = y;
+    thetaCapt = theta;
+endif
 
 endfunction

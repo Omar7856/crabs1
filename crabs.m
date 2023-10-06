@@ -13,10 +13,10 @@ sizeCapt = 50;
 % Put your call to drawCapt() here ..... You must give drawCapt its
 % input and output arguments.
 
-captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt)
+captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt);
 %*******************************************************
 
-% initialize command
+% initialize looping command
 
 cmd="null";
 
@@ -36,11 +36,11 @@ cmd = kbhit();
  endfor
 
  % then, it moves captain using the moveCapt function
- [xCapt,yCapt,thetaCapt] = moveCapt(cmd,xCapt,yCapt,thetaCapt);
+ [xCapt,yCapt,thetaCapt] = moveCapt(cmd,xCapt,yCapt,thetaCapt,mapWidth,mapHeight,sizeCapt);
 
 
  % afterwards, it draws the "new" captain at its new points
- captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt)
+ captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt);
 endif
 
 endwhile

@@ -2,7 +2,23 @@ function crabs ()
 % Crabs is a kids computer game where a fisherman, called the captain,
 % hunts for a very clever and powerful crab.
 % Draw the game map and initialize map dimensions.
+
+% initialize looping command
+
+cmd="null";
+crib=1;
+while (crib =1)
+  [mapHeight , mapWidth] = drawMap("MAP.jpg");
+    if (cmd == "P")
+  crib =2
+  endif
+endwhile
+
+
+
+if (cmd == "P")
 [mapHeight , mapWidth] = drawMap( "BGImage.png" );
+endif
 % Initialize captain location, heading and size
 xCapt = 1000;
 yCapt = 900;
@@ -16,9 +32,7 @@ sizeCapt = 50;
 captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt);
 %*******************************************************
 
-% initialize looping command
 
-cmd="null";
 
 % creates an infinite loop to keep the game from quitting
 % (shift+q will be the keyboard hit to quit the game)

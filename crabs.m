@@ -3,44 +3,50 @@ function crabs ()
 % hunts for a very clever and powerful crab.
 % Draw the game map and initialize map dimensions.
 
-% initialize looping command
+% initialize looping command, and have start up screen
 
-cmd="null";
-crib=1;
-while (crib =1)
-  [mapHeight , mapWidth] = drawMap("MAP.jpg");
-    if (cmd == "P")
-  crib =2
-  endif
+[mapHeight , mapWidth] = drawMap("IMG_EX.jpg");
+
+cmd = "null";
+
+while (cmd == "null")
+cmd = kbhit();
 endwhile
 
-
-
-if (cmd == "P")
+% initialize game map
 [mapHeight , mapWidth] = drawMap( "BGImage.png" );
-endif
+
+
 % Initialize captain location, heading and size
 xCapt = 1000;
-yCapt = 900;
+yCapt = 700;
 thetaCapt = -pi/2;
 sizeCapt = 50;
-% Draw the captain and initialize graphics handles
-%*********************************************************
-% Put your call to drawCapt() here ..... You must give drawCapt its
-% input and output arguments.
+
+%initialize the crab location, heading and size
+xCrab = 1000;
+yCrab = 1200;
+thetaCrab = -pi/2;
+sizeCrab = 50;
+
+% Draw the captain and crab and initialize graphics handles
 
 captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt);
+crabGraphics = drawCrab (xCrab, yCrab, thetaCrab, sizeCrab);
+
 %*******************************************************
 
 
 
 % creates an infinite loop to keep the game from quitting
 % (shift+q will be the keyboard hit to quit the game)
+cmd = "null";
 while(cmd != "Q")
 
-% cmd will read keyboard inputs
-cmd = kbhit();
 
+% cmd will read keyboard inputs
+
+cmd = kbhit();
 % if the keys w, a, or d, are pressed, it initializes the following:
  if( cmd == "w" || cmd == "a" || cmd == "d")
 
@@ -55,9 +61,26 @@ cmd = kbhit();
 
  % afterwards, it draws the "new" captain at its new points
  captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt);
+
+ % responds to a crab movement
+  elseif (cmd == "i" || cmd == "j" || cmd == "k" || cmd == "l" || cmd == ",")
+
+  %erases the old crab
+    for i=1:length(crabGraphics)
+      set(crabGraphics(i), 'Visible','off');
+    endfor
+
+    %moves crab
+    [xCrab,yCrab,thetaCrab] = moveCrab(cmd,xCrab,yCrab,thetaCrab,mapHeight,mapWidth,sizeCrab);
+
+    %draws new crab
+    crabGraphics = drawCrab(xCrab,yCrab,thetaCrab,sizeCrab);
+
 endif
 
 endwhile
 close all
+clear
+
 endfunction
 

@@ -1,5 +1,5 @@
 Function: crabs: no imput -> no output <br>
-Dependencies: drawMap and drawCapt <br>
+Dependencies: drawMap(), drawCapt(), drawCrab(), moveCapt(), moveCrab() <br>
 Call: crabs () <br>
 Side Effects: it creates the crabs enviornment for the user to play the game crabs. <br>
 
@@ -49,3 +49,34 @@ Purpose: expects theta as its argument, and produces a matrix that uses theta to
 Dependencies: None. <br>
 Call: R = getRotation (theta) <br> 
 Side Effects: None. <br>
+
+Function: isOnMap: <br>
+Purpose:  <br>
+Dependencies: <br>
+Call: <br>
+Side Effects: <br>
+
+Function: moveCapt: <br>
+Purpose: <br>
+Dependencies: <br>
+Call: <br>
+Side Effects: <br>
+
+Function: moveCrab: <br>
+Purpose: <br>
+Dependencies: <br>
+Call: <br>
+Side Effects: <br>
+
+Function: drawCrab: number1, number2, number3, number4 -> vector handle <br>
+Purpose: it takes number1, which is the x position, number2, which is the y position, number3, which is the heading of the plotted points, <br>
+and number4, the size of the crab, and returns a vector of graphics handle called H. It takes its inputs from the crabs function, where xCrab, yCrab, thetaCrab, and sizeCrab are predetermined in the crabs function and entered into this function. <br>
+Dependencies: getCrab(), getRotation(), getTranslation(), drawLine() <br>
+Call: h = drawCrab (xCrab,yCrab,thetaCrab,sizeCrab) <br>
+Side Effects: None.  <br>
+
+Function: getCrab: number -> matrix <br>
+Purpose: expects the size of the crab, and returns a matrix of points, and each collum represents a point on the crab <br>
+Dependencies: None. <br>
+Call: crab = getCrab (size) <br> 
+Side Effects: None <br>

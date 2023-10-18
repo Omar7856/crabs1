@@ -4,7 +4,7 @@ Call: crabs () <br>
 Side Effects: it creates the crabs enviornment for the user to play the game crabs. <br>
 
 
-Function: drawMap: image -> dimensions <br>
+Function: drawMap: image -> vector <br>
 Purpose: drawMap takes an image, and creates a backround with the base dimensions of the provided image, with the image set as a backround. <br>
 Dependencies: figure(), imgread(), size(img), imshow(), title(), hold on <br>
 Call: [height,width] = drawMap(imageName) <br>

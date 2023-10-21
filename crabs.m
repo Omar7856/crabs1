@@ -1,4 +1,4 @@
-function crabs ()
+function crabs (level)
 % Crabs is a kids computer game where a fisherman, called the captain,
 % hunts for a very clever and powerful crab.
 % Draw the game map and initialize map dimensions.
@@ -29,10 +29,19 @@ yCrab = 1200;
 thetaCrab = -pi/2;
 sizeCrab = 50;
 
+
+% initialize the jellyfish location, heading and size
+xJelly = rand*mapWidth;
+yJelly = 0;
+thetaJelly = -pi/2;
+sizeJelly = 25;
+
+
 % Draw the captain and crab and initialize graphics handles
 
 captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt);
 crabGraphics = drawCrab (xCrab, yCrab, thetaCrab, sizeCrab);
+jellyGraphics = drawJelly (xJelly, yJelly, thetaJelly, sizeJelly);
 
 %*******************************************************
 
@@ -40,19 +49,33 @@ crabGraphics = drawCrab (xCrab, yCrab, thetaCrab, sizeCrab);
 
 % creates an infinite loop to keep the game from quitting
 % (shift+q will be the keyboard hit to quit the game)
-cmd = "null";
-while(cmd != "Q")
+
+while(1)
+% jellyfish stuff
+
+  for i=1:length(jellyGraphics)
+    delete(jellyGraphics(i));
+  endfor
+
+  % move jellyfish
+  [xJelly, yJelly, thetaJelly] = moveJelly(level,xJelly,yJelly,thetaJelly,sizeJelly,mapWidth,mapHeight);
+
+  %draw Jellyfish
+  jellyGraphics = drawJelly(xJelly,yJelly,thetaJelly,sizeJelly);
+
+%read keyboard inputs
+cmd = kbhit(1);
+  if (cmd == 'Q')
+    break;
+  endif
 
 
-% cmd will read keyboard inputs
-
-cmd = kbhit();
 % if the keys w, a, or d, are pressed, it initializes the following:
  if( cmd == "w" || cmd == "a" || cmd == "d")
 
  % it erases the old captain so there's no duplicates of the captain in the game
  for i=1:length(captainGraphics);
-   set(captainGraphics(i),'Visible','off');
+   delete(captainGraphics(i));
  endfor
 
  % then, it moves captain using the moveCapt function
@@ -62,12 +85,13 @@ cmd = kbhit();
  % afterwards, it draws the "new" captain at its new points
  captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt);
 
+
  % responds to a crab movement
   elseif (cmd == "i" || cmd == "j" || cmd == "k" || cmd == "l" || cmd == ",")
 
   %erases the old crab
     for i=1:length(crabGraphics)
-      set(crabGraphics(i), 'Visible','off');
+      delete(crabGraphics(i));
     endfor
 
     %moves crab
@@ -77,6 +101,9 @@ cmd = kbhit();
     crabGraphics = drawCrab(xCrab,yCrab,thetaCrab,sizeCrab);
 
 endif
+
+fflush(stdout);
+pause(.01)
 
 endwhile
 close all

@@ -1,7 +1,7 @@
 function [xJelly,yJelly,thetaJelly] = moveJelly (level, x, y, theta, size, width, height)
 
 jellyMove = 20;
-dStep = jellyMove+level;
+dStep = jellyMove+(level*3);
 
   xJelly = x;
   yJelly = y + dStep;

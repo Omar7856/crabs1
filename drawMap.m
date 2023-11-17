@@ -20,7 +20,7 @@ img = imread(imageName);
 imshow(imageName);
 
 %put a title on the figure
-title("Crabs");
+title("Controls: Forward - W  | Left Turn - A  | Right Turn - D | Sprint - S");
 
 %keep the background and plot on top of it
 hold on

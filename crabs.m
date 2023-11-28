@@ -4,7 +4,7 @@ function crabs()
 % Draw the game map and initialize map dimensions.
 
 restart = 1;
-%while(restart)
+while(restart)
 
   %have start up screen
   level = drawStartScreen("START-SCREEN.png");
@@ -198,13 +198,13 @@ endif
 fflush(stdout);
 pause(.01);
 
-%endwhile
+endwhile
 
-%restart = drawEndScreen(img, numCrabs, crabsCaught)
+
+restart = drawEndScreen("START-SCREEN.png", numCrabs, crabsCaught);
 
 endwhile
 clear
 close all
-
 
 endfunction
